@@ -39,6 +39,16 @@ public class Deck
 
     }
 
+    public void shuffle()
+    {
+        cardsLeft = deck.size();
+        int random;
+        Card copy;
+        for (int i = deck.size() - 1; i >= 0; i++)
+        {
+            random = (int)(Math.random() * i);
+        }
+    }
 
 
 }
