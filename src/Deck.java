@@ -47,6 +47,10 @@ public class Deck
         for (int i = deck.size() - 1; i >= 0; i++)
         {
             random = (int)(Math.random() * i);
+            Card temp = deck.get(random);
+            deck.set(random, deck.get(i));
+            deck.set(i,temp);
+
         }
     }
 
