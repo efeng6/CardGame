@@ -26,6 +26,18 @@ public class Card
         }
     }
 
+    public int getPoint() {
+        return point;
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
     public String toString()
     {
         return rank + " of " + suit;

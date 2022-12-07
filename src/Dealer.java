@@ -1,2 +1,4 @@
-public class Dealer {
+public class Dealer
+{
+
 }

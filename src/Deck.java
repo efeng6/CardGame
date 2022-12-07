@@ -9,8 +9,11 @@ public class Deck
         cardsLeft = 0;
         for (int i = 0; i < ranks.length; i++)
         {
-            deck.add(new Card(ranks[i],suits[i],values[i]));
-            cardsLeft++;
+            for (int j = 0; j < suits.length; j++) {
+                deck.add(new Card(ranks[i], suits[j], values[i]));
+                cardsLeft++;
+
+            }
         }
     }
 
@@ -44,7 +47,7 @@ public class Deck
         cardsLeft = deck.size();
         int random;
         Card copy;
-        for (int i = deck.size() - 1; i >= 0; i++)
+        for (int i = deck.size() - 1; i >= 0; i--)
         {
             random = (int)(Math.random() * i);
             Card temp = deck.get(random);

@@ -34,11 +34,17 @@ public class Player {
     public void addCard(Card card)
     {
         hand.add(card);
+        points += card.getPoint();
     }
 
     public String toString()
     {
         return name + " has " + points + " points." + name + "'s cards: " + hand;
+    }
+
+    public String toStringHand()
+    {
+        return name + "'s cards: " + hand;
     }
 
 }
