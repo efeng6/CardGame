@@ -42,6 +42,9 @@ public class Deck
 
     }
 
+    /*
+    Starting with last card in deck and moving forwards, replaces each card with random card in front of it
+     */
     public void shuffle()
     {
         cardsLeft = deck.size();
@@ -56,6 +59,8 @@ public class Deck
 
         }
     }
+
+
 
 
 }

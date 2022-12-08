@@ -7,12 +7,14 @@ public class Player {
     public Player(String name) {
         this.name = name;
         points = 0;
+        hand = new ArrayList<Card>();
     }
 
     public Player(String name, ArrayList<Card> hand) {
         this.name = name;
         this.hand = hand;
         points = 0;
+        hand = new ArrayList<Card>();
     }
 
     public String getName() {
@@ -45,6 +47,18 @@ public class Player {
     public String toStringHand()
     {
         return name + "'s cards: " + hand;
+    }
+
+    public boolean hasAce()
+    {
+        for(Card card : hand)
+        {
+            if(card.getRank().equals("A"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

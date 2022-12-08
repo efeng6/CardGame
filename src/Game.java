@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Game
 {
-    private static final int HIGHESTNUM = 21;
     private String[] suits = {"Hearts", "Clubs", "Diamonds", "Spades"};
     private String[] ranks = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     private int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
@@ -51,13 +50,16 @@ public class Game
         dealer.addCard(deck.deal());
     }
 
+    /*
+    Plays game, asking player if they want more cards, ends when they go over 21 or decide to stop
+     */
     public void round()
     {
-        if(player.getPoints() >= 21)
+        if(player.getPoints() >= 21 || (player.getPoints() + 10 == 21 && player.hasAce()))
         {
             return;
         }
-        player.toStringHand();
+        System.out.println(player.toStringHand());
         hitorstand = "o";
         while (!hitorstand.equals("h") && !hitorstand.equals("s") )
         {
@@ -75,15 +77,23 @@ public class Game
         this.round();
     }
 
+    /*
+    Adds cards to dealer until they have at least 17 or have lost
+     */
     public void incrementDealer()
     {
-        if (dealer.getPoints() < 17)
+        if (dealer.getPoints() < 17
+        || dealer.hasAce() && dealer.getPoints() + 10 < 17)
         {
+
             dealer.addCard(deck.deal());
             this.incrementDealer();
         }
     }
 
+    /*
+    Prints if player won or lost, takes As into consideration
+     */
     public void endSequence()
     {
         System.out.println(dealer.toStringHand());
@@ -98,7 +108,15 @@ public class Game
             System.out.println("The dealer busted!  You win!");
             return;
         }
-        if (player.getPoints() == 21 || player.getPoints() == 21)
+        if(player.hasAce() && player.getPoints() + 10 <= 21)
+        {
+            player.addPoints(10);
+        }
+        if(dealer.hasAce() && dealer.getPoints() + 10 <= 21)
+        {
+            dealer.addPoints(10);
+        }
+        if (player.getPoints() == 21 || dealer.getPoints() == 21)
         {
             System.out.println("Blackjack!");
         }
@@ -107,10 +125,14 @@ public class Game
             System.out.println("You win!");
             return;
         }
-        if(player.getPoints() <= dealer.getPoints())
+        if(player.getPoints() < dealer.getPoints())
         {
             System.out.println("You lose!");
             return;
+        }
+        else
+        {
+            System.out.println("Tie!");
         }
     }
 
