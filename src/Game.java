@@ -19,7 +19,7 @@ public class Game
         Game g = new Game();
         g.printInstructions();
         g.dealStartingHand();
-        g.round();
+        g.playGame();
         g.incrementDealer();
         g.endSequence();
 
@@ -53,7 +53,7 @@ public class Game
     /*
     Plays game, asking player if they want more cards, ends when they go over 21 or decide to stop
      */
-    public void round()
+    public void playGame()
     {
         if(player.getPoints() >= 21 || (player.getPoints() + 10 == 21 && player.hasAce()))
         {
@@ -74,7 +74,7 @@ public class Game
         {
             return;
         }
-        this.round();
+        this.playGame();
     }
 
     /*

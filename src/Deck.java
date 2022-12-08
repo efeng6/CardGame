@@ -9,8 +9,8 @@ public class Deck
         cardsLeft = 0;
         for (int i = 0; i < ranks.length; i++)
         {
-            for (int j = 0; j < suits.length; j++) {
-                deck.add(new Card(ranks[i], suits[j], values[i]));
+            for (String suit : suits) {
+                deck.add(new Card(ranks[i], suit, values[i]));
                 cardsLeft++;
 
             }
@@ -19,11 +19,7 @@ public class Deck
 
     public boolean isEmpty()
     {
-        if (cardsLeft == 0)
-        {
-            return true;
-        }
-        return false;
+        return cardsLeft == 0;
     }
 
     public int getCardsLeft()
@@ -49,7 +45,6 @@ public class Deck
     {
         cardsLeft = deck.size();
         int random;
-        Card copy;
         for (int i = deck.size() - 1; i >= 0; i--)
         {
             random = (int)(Math.random() * i);

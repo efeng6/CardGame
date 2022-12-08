@@ -10,21 +10,6 @@ public class Card
         this.rank = rank;
     }
 
-    public int isHigher(Card other)
-    {
-        if (this.point > other.point)
-        {
-            return 1;
-        }
-        else if (this.point < other.point)
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
 
     public int getPoint() {
         return point;
@@ -36,6 +21,18 @@ public class Card
 
     public String getRank() {
         return rank;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public void setSuit(String suit) {
+        this.suit = suit;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 
     public String toString()
